@@ -1,0 +1,39 @@
+# Bytecode de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales
+venv/
+.env/
+.env.*
+
+# Archivos de configuración de IDEs
+.vscode/
+.idea/
+
+# Datos temporales o outputs locales
+*.tif
+*.tiff
+*.png
+*.jpg
+*.jpeg
+*.h5
+*.hdf5
+*.npy
+*.npz
+
+# Carpeta de procesamiento de chunks si es generada automáticamente
+processing/
+chunks/
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Otros
+*.bak
+*.swp
