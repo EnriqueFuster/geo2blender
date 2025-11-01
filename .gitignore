@@ -1,20 +1,21 @@
-# Bytecode de Python
+# Python bytecode
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Entornos virtuales
+# Virtual environments
 venv/
 .env/
 .env.*
 
-# Archivos de configuración de IDEs
+# IDE configuration files
 .vscode/
 .idea/
 
-# Datos temporales o outputs locales
+# Temporary data or local outputs
 *.tif
 *.tiff
+*.geotiff
 *.png
 *.jpg
 *.jpeg
@@ -22,18 +23,19 @@ venv/
 *.hdf5
 *.npy
 *.npz
+*.blend
 
-# Carpeta de procesamiento de chunks si es generada automáticamente
+# Processing or chunks folders if generated automatically
 processing/
 chunks/
 
 # Logs
 *.log
 
-# Sistema operativo
+# Operating system files
 .DS_Store
 Thumbs.db
 
-# Otros
+# Other temporary or backup files
 *.bak
 *.swp
