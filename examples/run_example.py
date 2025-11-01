@@ -1,5 +1,7 @@
 import os
 from glob import glob
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from geo2blender import config
 from geo2blender.merge_rasters import merge_rasters

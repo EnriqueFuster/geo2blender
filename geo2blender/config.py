@@ -1,7 +1,10 @@
 import os
 
 # Base data path: relative or absolute
-BASE_DATA_PATH = "./data"
+REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
+PROJECT_DIR = "examples/project_template"
+
+BASE_DATA_PATH = os.path.join(REPO_ROOT, PROJECT_DIR)
 
 # Input/output directories
 SOURCES_SUBDIR = "sources"
@@ -29,5 +32,5 @@ SATELLITE_SCALE_FACTOR = 0.5
 CHUNKS_SUBDIR = "chunks"
 CHUNKS_DIR = os.path.join(PROCESSING_DIR, CHUNKS_SUBDIR)
 os.makedirs(CHUNKS_DIR, exist_ok=True) 
-CHUNKS_ROWS = 6
-CHUNKS_COLS = 6 
+CHUNKS_ROWS = 4
+CHUNKS_COLS = 4 
