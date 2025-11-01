@@ -21,7 +21,7 @@ It is intended for reproducible workflows without the need to open heavy GIS sof
   - [Using venv + pip](#using-venv--pip)
   - [GDAL/rasterio notes](#gdalgdalrasterio-notes)
 - [Input Data](#input-data)
-- [Quickstart](#quickstart)
+- [Reproducible Example (Pipeline Workflow)](#reproducible-example-pipeline-workflow)
 - [CLI Usage](#cli-usage)
 - [Python API Usage](#python-api-usage)
 - [Technical Notes](#technical-notes)
@@ -47,17 +47,30 @@ It is intended for reproducible workflows without the need to open heavy GIS sof
 
 ```
 geo2blender/
-  geo2blender/
-    cli.py                 # CLI with `merge` and `export` subcommands
-    merge_rasters.py       # Core raster merging logic (windowed + reprojection)
-    export_merged.py       # Export merged GeoTIFFs to PNG
-    export_chunks.py       # Generate aligned DSM + satellite chunk PNGs
-    config.py              # Default paths and parameters
-  scripts/
-    run_example.py         # End-to-end workflow example
-  requirements.txt
-  LICENSE
-  README.md
+│
+├── geo2blender/
+│   ├── __init__.py
+│   ├── cli.py                # CLI with `merge` and `export` commands
+│   ├── merge_rasters.py      # Core raster merging logic
+│   ├── export_merged.py      # Export merged GeoTIFFs to PNG
+│   ├── export_chunks.py      # Generate aligned DSM + satellite chunk PNGs
+│   └── config.py             # Default paths and parameters
+│
+├── examples/
+│   ├── run_example.py        # Step 1: preprocessing pipeline (CLI + Python API)
+│   └── project_template/
+│       ├── project_name.blend     # Step 2: ready-to-use Blender file
+│       ├── project_script.py      # Script inside the .blend file
+│       ├── sources/               # DSM + satellite GeoTIFFs
+│       │   ├── dsm/
+│       │   └── satellite/
+│       ├── processing/            # Generated automatically
+│       │   └── chunks/
+│       └── renders/               # Final renders from the blend file
+|
+├── requirements.txt
+├── LICENSE
+└── README.md
 ```
 
 ## Requirements
@@ -108,7 +121,7 @@ data/
   processing/    # Created automatically; intermediate + final outputs
 ```
 
-### Geoportal sources
+### Tested geoportal sources
 
 **Satellite imagery**:  
 - Switzerland: [swisstopo — SWISSIMAGE 10](https://www.swisstopo.admin.ch/en/orthoimage-swissimage-10)  
@@ -127,22 +140,40 @@ data/
 - Each country has **different workflows** for downloading, unzipping, and converting data into GeoTIFFs.  
 - Once you have valid `.tif` tiles, place them into the correct folder and proceed with the pipeline.
 
-## Quickstart
 
-1) Place your `.tif` DSM and satellite tiles into `data/sources/dsm` and `data/sources/satellite`.  
-2) Run the end-to-end example:
+## Reproducible Example (Pipeline Workflow)
+
+The **examples** folder contains a fully reproducible end-to-end workflow.
+
+### Step 1 — Run preprocessing (outside Blender)
 
 ```bash
-python scripts/run_example.py
+python examples/run_example.py
 ```
 
-This produces:
+This will:
 
-- `data/processing/dsm_merged.tif`
-- `data/processing/satellite_merged.tif`  
-- PNG chunks in `data/processing/chunks/`:
-  - `dsm_rXXX_cYYY.png` (16‑bit heightmap)
-  - `satellite_rXXX_cYYY.png` (8‑bit RGB texture)
+- Merge DSM and satellite tiles.  
+- Generate the following outputs in `examples/project_template/processing/`:
+  - `dsm_merged.tif`
+  - `satellite_merged.tif`
+  - Chunked PNGs under `chunks/` (ready for Blender).
+
+
+### Step 2 — Open in Blender
+
+1. Open **`examples/project_template/project_name.blend`** in Blender.  
+2. In Blender’s **Text Editor**, open and run the internal script  
+   (or load `import_chunks_blender.py` if external).  
+3. The script:
+   - Loads the chunk PNGs automatically from the processed folder.
+   - Builds the terrain using displacement.
+   - Applies global HSV and material settings.
+
+✅ When executed successfully, you’ll see in Blender’s console:
+```
+✅ Scene assembled with chunks, materials, global HSV control, and displacement configured.
+```
 
 ## CLI Usage
 
@@ -224,14 +255,6 @@ generate_chunks(
 - CLI is minimal; `chunks` export is currently Python API only.  
 - No automated data download yet.  
 - Limited validation for mixed CRS inputs.  
-
-## Roadmap
-
-- CLI support for `chunks`.  
-- Configurable resampling methods.  
-- Export to EXR 32‑bit heightmaps.  
-- Remote COG reading (streaming).  
-- Automated geoportal download workflows per country.  
 
 ## Contributing
 
