@@ -10,6 +10,10 @@ It is intended for reproducible workflows without the need to open heavy GIS sof
 > ⚠️ This project is in early stage (alpha). The API and CLI may evolve.  
 > Tested with datasets from **Spain, England, France, and Switzerland** — note that **data acquisition is not automated** yet and differs by country. See [Input Data](#input-data).
 
+<p align="center">
+  <img src="assets/workflow_blender2gis.png" alt="Pipeline overview" width="100%">
+</p>
+
 ---
 
 ## Table of Contents
@@ -264,11 +268,14 @@ Ideas:
 - Improve CLI and configuration.  
 - Implement automated download scripts for supported countries.  
 
-```bash
-# Suggested testing setup
-pytest -q
-ruff check .
-```
+## Render Results
+<p align="center">
+  <img src="assets/render_example_marseille.jpeg" width="100%">
+  <img src="assets/render_example_luzern.jpeg" width="100%">
+  <img src="assets/render_example_ordesa.jpeg" width="100%">
+  <img src="assets/render_example_madrid.jpeg" width="100%">
+  <img src="assets/render_example_lyon.jpeg" width="100%">
+</p> 
 
 ## License
 

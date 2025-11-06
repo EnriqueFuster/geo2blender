@@ -24,6 +24,9 @@ venv/
 *.npy
 *.npz
 *.blend
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
 
 # Processing or chunks folders if generated automatically
 processing/
