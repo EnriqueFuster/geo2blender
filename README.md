@@ -7,6 +7,10 @@
 **Geo2Blender** is a lightweight Python package/CLI for **merging raster tiles** (e.g. DSM/DTM and satellite orthophotos) and **exporting them as PNGs** that can be directly used in **Blender** as displacement maps and textures.  
 It is intended for reproducible workflows without the need to open heavy GIS software.
 
+This workflow was born from the practical need to bring large, high-resolution raster datasets (GeoTIFFs, DSM/DTM tiles, orthophotos) into Blender without the usual friction. Blender and BlenderGIS have inherent limitations when dealing with very large GeoTIFFs, certain CRS/metadata configurations, and extreme image sizes—often forcing you to convert, crop, or downsample data manually. Geo2Blender preprocesses these rasters into clean, consistent, Blender-friendly PNGs while preserving spatial detail and avoiding quality loss.
+
+It is especially useful for importing high-detail elevation models and large terrain areas into Blender, enabling artists and technical users to work with accurate geographic data without relying on heavyweight GIS tools or manual preprocessing steps.
+
 > ⚠️ This project is in early stage (alpha). The API and CLI may evolve.  
 > Tested with datasets from **Spain, England, France, and Switzerland** — note that **data acquisition is not automated** yet and differs by country. See [Input Data](#input-data).
 
