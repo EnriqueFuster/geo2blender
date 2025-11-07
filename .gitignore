@@ -23,7 +23,6 @@ venv/
 *.hdf5
 *.npy
 *.npz
-*.blend
 !assets/*.png
 !assets/*.jpg
 !assets/*.jpeg
