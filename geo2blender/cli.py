@@ -1,6 +1,6 @@
 import argparse
 from geo2blender.merge_rasters import merge_rasters
-from geo2blender.export import export_texture_png
+from geo2blender.export_merged import export_texture_png
 
 def main():
     parser = argparse.ArgumentParser(

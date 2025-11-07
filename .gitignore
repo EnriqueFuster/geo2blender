@@ -1,0 +1,43 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env/
+.env.*
+
+# IDE configuration files
+.vscode/
+.idea/
+
+# Temporary data or local outputs
+*.tif
+*.tiff
+*.geotiff
+*.png
+*.jpg
+*.jpeg
+*.h5
+*.hdf5
+*.npy
+*.npz
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+
+# Processing or chunks folders if generated automatically
+processing/
+chunks/
+
+# Logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Other temporary or backup files
+*.bak
+*.swp
